@@ -1,0 +1,23 @@
+name: Arena
+main: be.raffon.arena.arena
+version: 0.1
+description: Plugin Arena gratuit fait par Rafael Silva Mendes
+author: Raffon
+api-version: 1.16
+commands:
+  pvparena:
+    description: Commande principale.
+    usage: /pvparena
+    permission: arena.command
+permissions:
+  arena.*:
+    description: Gives access to all survie commands
+    children:
+      arena.join: true
+      arena.leave: true
+  arena.join:
+    description: Arena join
+  arena.leave:
+    description: Arena leave
+  arena.command:
+    description: Arena command
