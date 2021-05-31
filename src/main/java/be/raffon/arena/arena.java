@@ -29,11 +29,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @SuppressWarnings("deprecation")
 public class arena extends JavaPlugin implements Listener{
-    String host;
-    int port;
-    String database;
-    String username;
-    String password;
+
     private static InventoryManager invs;
     public YamlConfiguration config;
     public static File fileconfig;
@@ -62,11 +58,17 @@ public class arena extends JavaPlugin implements Listener{
 		}
 		js = new File(this.getDataFolder(), "//" + "config.JSON");*/
 
+        String host;
+        int port;
+        String database;
+        String username;
+        String password;
+
         host = "localhost";
         port = 3306;
         database = "sf2021";
         username = "sf2021";
-        password = "Lq%n9aajZS7CtU";
+        password = "password";
         sqlManager = new SQLManager(host, port, database, username, password);
         this.fileconfig = new File(this.getDataFolder().getPath(), "config.yml");
         YamlConfiguration config = YamlConfiguration.loadConfiguration(fileconfig);
@@ -83,9 +85,9 @@ public class arena extends JavaPlugin implements Listener{
             try {
                 HashMap<UUID, Integer> hash = new HashMap<UUID, Integer>();
                 while(rs.next()) {
-                    String username = rs.getString("username");
+                    String user = rs.getString("username");
                     Integer kills = rs.getInt("kills");
-                    hash.put(UUID.fromString(username), kills);
+                    hash.put(UUID.fromString(user), kills);
                 }
                 hashmap.set(hash);
             } catch (SQLException throwables) {
